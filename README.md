@@ -1,4 +1,25 @@
 <section class="referral-section">
+  <h2>Today’s Deals — Share & Earn</h2>
+  <p>Help your friends save big and earn rewards with every sign-up you share 😌💸</p>
+
+  <div class="referral-grid">
+    
+    <!-- Deriv -->
+    <div class="deal-card">
+      <h3>Trade & Earn 📈</h3>
+      <p>Share this Deriv trading opportunity and earn commissions when they win.</p>
+      <a href="YOUR_DERIV_LINK_HERE" class="btn-share">Share Deriv Deal</a>
+    </div>
+
+    <!-- Alibaba -->
+    <div class="deal-card">
+      <h3>Shop & Save 💸</h3>
+      <p>Invite your friends to shop with Alibaba worldwide and earn rewards.</p>
+      <a href="YOUR_ALIBABA_LINK_HERE" class="btn-share">Share Alibaba Deal</a>
+    </div>
+
+  </div>
+</section><section class="referral-section">
     <h2>Invite & Earn Rewards</h2>
     <p>Share GAS Deals with your friends and earn when they join!</p>
     <a href="YOUR_REFERRAL_LINK_HERE" class="btn-share">Invite & Earn</a>
