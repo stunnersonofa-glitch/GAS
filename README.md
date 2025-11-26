@@ -1,4 +1,8 @@
-[![Bolt.new: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.new)
+<section class="referral-section">
+    <h2>Invite & Earn Rewards</h2>
+    <p>Share GAS Deals with your friends and earn when they join!</p>
+    <a href="YOUR_REFERRAL_LINK_HERE" class="btn-share">Invite & Earn</a>
+</section>[![Bolt.new: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.new)
 
 # Bolt.new: AI-Powered Full-Stack Web Development in the Browser
 
