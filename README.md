@@ -1,4 +1,6 @@
-<button class="finance-office-btn"
+0🜁1
+CHOSEN FOR MORE
+Access is Earned.<button class="finance-office-btn"
         onclick="location.href='finance.html'">
   FINANCE OFFICE 🚀
 </button><button class="finance-office-btn">
