@@ -1,4 +1,7 @@
-<button class="finance-office-btn">
+<button class="finance-office-btn"
+        onclick="location.href='finance.html'">
+  FINANCE OFFICE 🚀
+</button><button class="finance-office-btn">
   FINANCE OFFICE 🚀
 </button><section class="referral-section">
   <h2>Today’s Deals — Share & Earn</h2>
