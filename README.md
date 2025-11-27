@@ -1,4 +1,6 @@
-<section class="referral-section">
+<button class="finance-office-btn">
+  FINANCE OFFICE 🚀
+</button><section class="referral-section">
   <h2>Today’s Deals — Share & Earn</h2>
   <p>Help your friends save big and earn rewards with every sign-up you share 😌💸</p>
 
