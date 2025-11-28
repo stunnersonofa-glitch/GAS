@@ -1,4 +1,46 @@
-0🜁1
+<div class="hero-section">
+  <h1>001BRICKY</h1>
+  <p>Grounded in God's Glory ✨</p>
+  
+  <button class="primary-button" onclick="openSponsor()">Sponsor God's Work ✨</button>
+  <button class="secondary-button" onclick="openStore()">Buy Skyworth 55" TV 📺</button>
+</div>
+
+<style>
+.hero-section {
+  text-align: center;
+  color: #fff;
+  padding: 40px 0;
+}
+
+.primary-button, .secondary-button {
+  width: 90%;
+  padding: 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #d4af37; /* Gold → God's glory */
+}
+
+.secondary-button {
+  background: #0f0; /* Profit & growth */
+}
+</style>
+
+<script>
+function openSponsor() {
+  alert("Sponsor System Coming Online ✨");
+}
+
+function openStore() {
+  alert("TV Store Launching 📺🚀");
+}
+</script>0🜁1
 CHOSEN FOR MORE
 Access is Earned.<button class="finance-office-btn"
       <!DOCTYPE html>
