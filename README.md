@@ -1,4 +1,6 @@
-npm install -g surge
+COMMERCEOS: GLOBAL PUBLIC RELEASE — 001A-B-D-E V1
+Status: LIVE 🌍
+Mission: Empower Every Business. Protect Every Life.npm install -g surge
 surge ./public yourname.surge.sh<div class="hero-section">
   <h1>001BRICKY</h1>
   <p>Grounded in God's Glory ✨</p>
