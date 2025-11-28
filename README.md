@@ -1,4 +1,5 @@
-<div class="hero-section">
+npm install -g surge
+surge ./public yourname.surge.sh<div class="hero-section">
   <h1>001BRICKY</h1>
   <p>Grounded in God's Glory ✨</p>
   
