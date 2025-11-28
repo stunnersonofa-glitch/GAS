@@ -1,4 +1,24 @@
-<div class="hero-section">
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+
+<div id="paypal-button-container" style="margin:20px;"></div>
+
+<script>
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: { value: '10.00' }, // Sponsor $10 starter tier ✨
+                description: "Support God's Work through 001BRICKY ✨🙏"
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            alert('Sponsor Success: ' + details.payer.name.given_name + ' ✨');
+        });
+    }
+}).render('#paypal-button-container');
+</script><div class="hero-section">
   <h1>001BRICKY</h1>
   <p>Grounded in God's Glory ✨</p>
   
