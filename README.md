@@ -1,7 +1,63 @@
 0🜁1
 CHOSEN FOR MORE
 Access is Earned.<button class="finance-office-btn"
-        onclick="location.href='finance.html'">
+      <!DOCTYPE html>
+<html>
+<head>
+<title>Skyworth 43" Smart TV</title>
+<style>
+body {
+  background: #031a30;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: gold;
+}
+.button {
+  background: gold;
+  color: #031a30;
+  padding: 18px 30px;
+  border-radius: 10px;
+  font-size: 22px;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  margin: 20px auto;
+  width: 260px;
+}
+img { width: 300px; border-radius: 12px; }
+</style>
+</head>
+
+<body>
+<h2>Skyworth 43" Smart TV</h2>
+<img src="https://i.imgur.com/6uTW5xX.jpeg" alt="TV">
+
+<p>Price: <b>28,000 KES</b></p>
+
+<a class="button"
+href="https://wa.me/254746734995?text=Hello%2C+I+want+to+order+the+Skyworth+43%22+Smart+TV+for+28%2C000+KES.+My+delivery+location+is%3A">
+🛒 Order On WhatsApp</a>
+
+<button class="button" onclick="confirmOrder()">✔ Confirm Order</button>
+
+<a class="button" href="index.html">🏡 Back Home</a>
+
+<script>
+function confirmOrder() {
+  let orders = JSON.parse(localStorage.getItem("orders") || "[]");
+  orders.push({
+    product: "Skyworth 43",
+    price: 28000,
+    time: new Date().toLocaleString(),
+    blessing: "May God bless this home with provision."
+  });
+  localStorage.setItem("orders", JSON.stringify(orders));
+  alert("Order Logged! Finance Updated ✔\n\nMay God bless this home with provision.");
+}
+</script>
+
+</body>
+</html>  onclick="location.href='finance.html'">
   FINANCE OFFICE 🚀
 </button><button class="finance-office-btn">
   FINANCE OFFICE 🚀
