@@ -1,4 +1,132 @@
-COMMERCEOS: GLOBAL PUBLIC RELEASE — 001A-B-D-E V1
+// pubspec.yaml dependencies:
+//   http: ^1.0.0
+//   flutter_dotenv: ^5.0.2  (optional for config)
+
+// withdraw_with_otp.dart
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+class WithdrawWithOtp extends StatefulWidget {
+  final String backendBase; // e.g. "https://api.yourdomain.com"
+  const WithdrawWithOtp({super.key, required this.backendBase});
+
+  @override
+  State<WithdrawWithOtp> createState() => _WithdrawWithOtpState();
+}
+
+class _WithdrawWithOtpState extends State<WithdrawWithOtp> {
+  bool loading = false;
+  String status = '';
+  int amount = 100;
+  String phone = ''; // user should enter phone in E.164 e.g. +2547...
+  String wdId = '';
+
+  Future<void> requestWithdraw() async {
+    setState(() { loading = true; status = ''; });
+    try {
+      final res = await http.post(
+        Uri.parse('${widget.backendBase}/api/request-withdraw'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'amount': amount, 'phone': phone}),
+      );
+      final j = jsonDecode(res.body);
+      if (res.statusCode == 200) {
+        wdId = j['wdId'];
+        // show OTP input dialog
+        await showDialog(context: context, builder: (_) => OtpDialog(onConfirm: verifyOtp));
+      } else {
+        setState(() { status = 'Error: ${j['message'] ?? res.statusCode}'; });
+      }
+    } catch (e) {
+      setState(() { status = 'Network error'; });
+    } finally {
+      setState(() { loading = false; });
+    }
+  }
+
+  Future<void> verifyOtp(String otp) async {
+    setState(() { loading = true; status = 'Verifying OTP...'; });
+    try {
+      final res = await http.post(
+        Uri.parse('${widget.backendBase}/api/verify-otp'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'wdId': wdId, 'otp': otp}),
+      );
+      final j = jsonDecode(res.body);
+      if (res.statusCode == 200) {
+        setState(() { status = 'STK Push initiated — check phone for prompt. TxId: ${j['checkoutRequestID'] ?? j['txId'] ?? '—'}'; });
+      } else {
+        setState(() { status = 'Error: ${j['message'] ?? res.statusCode}'; });
+      }
+    } catch (e) {
+      setState(() { status = 'Network error'; });
+    } finally {
+      setState(() { loading = false; });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextField(
+          decoration: InputDecoration(labelText: 'Phone (e.g. +2547...)'),
+          onChanged: (v) => phone = v.trim(),
+          keyboardType: TextInputType.phone,
+        ),
+        SizedBox(height: 8),
+        TextField(
+          decoration: InputDecoration(labelText: 'Amount (KES)'),
+          keyboardType: TextInputType.number,
+          onChanged: (v) => amount = int.tryParse(v) ?? 100,
+          controller: TextEditingController(text: amount.toString()),
+        ),
+        SizedBox(height: 12),
+        ElevatedButton(
+          onPressed: loading ? null : requestWithdraw,
+          child: loading ? CircularProgressIndicator(color: Colors.white) : Text('Withdraw'),
+        ),
+        SizedBox(height: 8),
+        Text(status),
+      ],
+    );
+  }
+}
+
+class OtpDialog extends StatefulWidget {
+  final Future<void> Function(String otp) onConfirm;
+  const OtpDialog({super.key, required this.onConfirm});
+  @override
+  State<OtpDialog> createState() => _OtpDialogState();
+}
+class _OtpDialogState extends State<OtpDialog> {
+  String otp = '';
+  bool loading = false;
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Enter OTP'),
+      content: TextField(
+        keyboardType: TextInputType.number,
+        onChanged: (v) => otp = v,
+        decoration: InputDecoration(hintText: '6-digit code'),
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context), child: Text('Cancel')),
+        ElevatedButton(
+          onPressed: loading ? null : () async {
+            setState((){loading = true;});
+            await widget.onConfirm(otp);
+            setState((){loading = false;});
+            Navigator.pop(context);
+          },
+          child: loading ? CircularProgressIndicator(color: Colors.white) : Text('Verify'),
+        )
+      ],
+    );
+  }
+}COMMERCEOS: GLOBAL PUBLIC RELEASE — 001A-B-D-E V1
 Status: LIVE 🌍
 Mission: Empower Every Business. Protect Every Life.npm install -g surge
 surge ./public yourname.surge.sh<div class="hero-section">
